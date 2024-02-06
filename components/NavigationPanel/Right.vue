@@ -17,6 +17,7 @@ import { genres } from "~/constants/genres";
       <NuxtLink
         v-for="genre in genres.slice(1, 5)"
         :to="`/genres?genre=${genre.name}`"
+        class="genre-item"
       >
         <UCard
           :style="{

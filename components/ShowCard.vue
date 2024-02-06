@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import type { IShow } from "~/types/tvmaze/shows";
+import { statusColor } from "../utils/status-color";
 
 defineProps<{ show: IShow }>();
-
 </script>
 <template>
   <UCard
@@ -30,10 +30,12 @@ defineProps<{ show: IShow }>();
     class="min-w-64"
   >
     <template #header>
-      <h4 class="font-lato font-extrabold text-lg text-white truncate">{{ show.name }}</h4>
+      <h4 class="font-lato font-extrabold text-lg text-white truncate">
+        {{ show.name }}
+      </h4>
       <div class="flex flex-row items-center">
-        <UIcon name="i-heroicons-star-solid mr-2" class="text-white " />
-        <span class="text-white ">{{ show.rating.average }}</span>
+        <UIcon name="i-heroicons-star-solid mr-2" class="text-white" />
+        <span class="text-white">{{ show.rating.average }}</span>
       </div>
     </template>
 

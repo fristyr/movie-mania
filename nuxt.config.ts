@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@vueuse/nuxt',
     '@nuxt/image',
-    '@pinia/nuxt'
+    '@nuxt/test-utils/module'
   ],
   ui: {
     icons: ['arcticons', 'heroicons']

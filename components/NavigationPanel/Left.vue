@@ -1,6 +1,12 @@
 <script lang="ts" setup>
-import { menuNavigation } from "~/constants/navigation";
+import { menuNavigation } from "../../constants/navigation";
 const { currentRoute } = useRouter();
+
+const dynamicClass = (link: string) => {
+  return currentRoute.value.fullPath === link
+    ? "border-r-2 border-green-500 text-green-500"
+    : "";
+};
 </script>
 
 <template>
@@ -10,11 +16,7 @@ const { currentRoute } = useRouter();
       <NuxtLink v-for="link in menuNavigation" :key="link.id" :to="link.to">
         <div
           class="flex flex-1 flex-row items-center mr-2 mb-6"
-          :class="
-            currentRoute.fullPath === link.to
-              ? 'border-r-2 border-green-500 text-green-500'
-              : ''
-          "
+          :class="dynamicClass(link.to)"
         >
           <UIcon :name="link.icon" class="w-8 h-8 mr-2" />
           <p class="text-lg">{{ link.title }}</p>
