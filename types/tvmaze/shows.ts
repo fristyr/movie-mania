@@ -24,7 +24,7 @@ export interface IShow {
     name: string;
     type: string;
     language: string;
-    genres: string[];
+    genres: IGenres['name'][];
     status: 'Running' | 'To Be Determined' | 'Ended';
     runtime: number;
     averageRuntime: number;
@@ -85,4 +85,9 @@ export interface IRating {
 export interface ISchedule {
     time: string;
     days: string[];
+}
+
+export interface IGenres {
+    name: "All" | "Action" | "Science-Fiction" | "Drama" | "Fantasy" | "Thriller" | "Crime" | "Horror" | "Romance" | "Adventure" | "Espionage" | "Music" | "Mystery" | "Supernatural" | "Family" | "Anime",
+    image: string
 }

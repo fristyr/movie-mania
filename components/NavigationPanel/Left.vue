@@ -14,6 +14,12 @@ const menuNavigation = [
     title: "Shows",
     icon: "i-heroicons-film",
   },
+  {
+    id: 3,
+    to: "/genres",
+    title: "Genres",
+    icon: "i-heroicons-user-group-solid",
+  },
 ];
 
 const menuLibraryNavigation = [
