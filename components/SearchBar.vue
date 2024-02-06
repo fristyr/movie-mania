@@ -10,8 +10,6 @@ const url = computed(
 );
 
 const { data: searchShows } = await useFetch<IApiShowSearchResponse[]>(url);
-
-
 </script>
 
 <template>
@@ -46,7 +44,12 @@ const { data: searchShows } = await useFetch<IApiShowSearchResponse[]>(url);
       </div>
 
       <div class="overflow-auto max-h-[22vw] space-y-8">
-        <div v-for="item in searchShows" :key="item.show.id" class="flex flex-row items-center">
+        <NuxtLink
+          v-for="item in searchShows"
+          :key="item.show.id"
+          :to="`/tvshows/${item.show.id}`"
+          class="flex flex-row items-center"
+        >
           <img
             :src="
               item.show.image && item.show.image.medium
@@ -59,7 +62,10 @@ const { data: searchShows } = await useFetch<IApiShowSearchResponse[]>(url);
             <h5 class="font-extrabold text-xl">{{ item.show.name }}</h5>
 
             <ul class="list-disc pl-4 flex flex-row space-x-8">
-              <li v-for="(genre , index) in item.show.genres" :key="genre + index">
+              <li
+                v-for="(genre, index) in item.show.genres"
+                :key="genre + index"
+              >
                 {{ genre }}
               </li>
             </ul>
@@ -74,7 +80,7 @@ const { data: searchShows } = await useFetch<IApiShowSearchResponse[]>(url);
               }}</span>
             </div>
           </div>
-        </div>
+        </NuxtLink>
       </div>
     </div>
   </section>
