@@ -37,7 +37,7 @@ import { genres } from "~/constants/genres";
             },
           }"
         >
-          <h4>{{ genre.name }}</h4>
+          <h4 class="text-white font-extrabold">{{ genre.name }}</h4>
         </UCard>
       </NuxtLink>
     </div>

@@ -10,7 +10,7 @@ const { currentRoute } = useRouter();
       <NuxtLink v-for="link in menuNavigation" :key="link.id" :to="link.to">
         <div
           class="flex flex-1 flex-row items-center pr-6 mr-2 mb-6"
-          :class="currentRoute.path === link.to ? ' text-green-500' : ''"
+          :class="currentRoute.fullPath === link.to ? ' text-green-500' : ''"
         >
           <UIcon :name="link.icon" class="w-8 h-8 mr-2" />
           <p class="text-lg">{{ link.title }}</p>
