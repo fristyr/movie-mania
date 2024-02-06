@@ -2,7 +2,7 @@
 import type { IApiShowsResponse } from "~/types/tvmaze/shows";
 
 const { pending, data: shows } = await useFetch<IApiShowsResponse>(
-  "http://localhost:3000/api/movies/shows?pagination=1&sort=desc", 
+  "/api/movies/shows?pagination=1&sort=desc", 
 );
 </script>
 

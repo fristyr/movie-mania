@@ -8,7 +8,7 @@ const route = useRoute();
 const selectedGenre = computed(() => route.query.genre as IGenres["name"]);
 
 const url = computed(
-  () => `http://localhost:3000/api/movies/shows?pagination=${showsPage.value}`
+  () => `/api/movies/shows?pagination=${showsPage.value}`
 );
 
 const { data: shows, refresh } = await useFetch<IApiShowsResponse>(url);

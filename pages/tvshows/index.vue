@@ -5,7 +5,7 @@ const showsPage = ref(1);
 const currentSort = ref(0);
 const url = computed(
   () =>
-    `http://localhost:3000/api/movies/shows?pagination=${showsPage.value}&limit=25`
+    `/api/movies/shows?pagination=${showsPage.value}&limit=25`
 );
 
 const items = [

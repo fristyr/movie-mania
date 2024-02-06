@@ -4,7 +4,7 @@
 
 <template>
     <section>
-      <BannerPopularShowsList />
+      <PopularShowsBannerList />
       <MostPopularShowsList />
     </section>
 </template>

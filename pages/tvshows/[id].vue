@@ -3,7 +3,7 @@ import type { IShow } from "~/types/tvmaze/shows";
 
 const route = useRoute();
 const url = computed(
-  () => `http://localhost:3000/api/movies/shows/${route.params.id}`
+  () => `/api/movies/shows/${route.params.id}`
 );
 const { data: show } = await useFetch<IShow>(url);
 </script>

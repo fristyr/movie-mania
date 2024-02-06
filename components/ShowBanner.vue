@@ -10,39 +10,39 @@ defineProps<{ shows: IShow[] }>();
     :ui="{
       item: 'basis-full',
     }"
-    class="w-full rounded-2xl overflow-hidden shadow ring-1 ring-gray-200 dark:ring-gray-800"
+    class="w-full max-h-[45rem] md:max-h-auto rounded-2xl overflow-hidden shadow ring-1 ring-gray-200 dark:ring-gray-800"
     indicators
     arrows
   >
-    <template #default="{ item }: { item: IShow }">
+    <template #default="{ item: show }: { item: IShow }">
       <article class="flex flex-row">
         <div>
           <NuxtImg
             :src="
-              item.image && item.image.medium
-                ? item.image.medium
+              show.image && show.image.medium
+                ? show.image.medium
                 : 'https://placehold.co/100x100'
             "
-            width="370"
-            height="490"
+            class="xl:w-[10rem] 2xl:w-[20rem] xl:h 2xl:h-full pt-8 2xl:pt-0"
+            
             fit="cover"
           />
         </div>
 
-        <div class="flex-1 p-12">
+        <div class="flex-1 p-6">
           <h1 class="font-lato font-extrabold text-2xl mb-4">
-            {{ item.name }}
+            {{ show.name }}
           </h1>
 
           <div class="flex flex-row items-center justify-between mb-4">
-            <h4 class="font-lato text-md">Premiered: {{ item.premiered }}</h4>
+            <h4 class="font-lato text-md">Premiered: {{ show.premiered }}</h4>
             <h4 class="flex items-center justify-center">
               <span class="mr-2">Status:</span>
               <UIcon
                 name="i-heroicons-globe-americas-solid mr-1"
-                :class="statusColor(item.status)"
+                :class="statusColor(show.status)"
               />
-              <span :class="statusColor(item.status)">{{ item.status }}</span>
+              <span :class="statusColor(show.status)">{{ show.status }}</span>
             </h4>
           </div>
 
@@ -50,17 +50,17 @@ defineProps<{ shows: IShow[] }>();
             <div class="flex flex-row">
               <h4 class="mr-2">Genres:</h4>
               <span
-                v-for="(genre, index) in item.genres"
+                v-for="(genre, index) in show.genres"
                 :key="genre + index"
                 class="mr-2"
               >
                 {{ genre }}
               </span>
             </div>
-            <h4>Country: {{ item.network.country.name }}</h4>
+            <h4>Country: {{ show.network.country.name }}</h4>
           </div>
 
-          <div class="mr-12 mb-4" v-html="item.summary"></div>
+          <div class="mr-12 mb-4  2xl:max-w-[90%] xl:text-sm 2xl:text-lg" v-html="show.summary"></div>
 
           <div class="flex flex-row items-center space-x-4">
             <UButton
@@ -72,7 +72,7 @@ defineProps<{ shows: IShow[] }>();
               :padded="false"
               class="px-4 py-4 opacity-85 rounded-2xl"
             />
-            <NuxtLink :to="`/tvshows/${item.id}`">
+            <NuxtLink :to="`/tvshows/${show.id}`">
               <UButton
                 color="primary"
                 variant="solid"

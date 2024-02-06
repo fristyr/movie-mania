@@ -4,7 +4,7 @@ import type { IApiShowsResponse } from "~/types/tvmaze/shows";
 const showsPage = ref(1);
 const url = computed(
   () =>
-    `http://localhost:3000/api/movies/shows?pagination=${showsPage.value}&sort=desc`
+    `/api/movies/shows?pagination=${showsPage.value}&sort=desc`
 );
 const { data: shows } = await useFetch<IApiShowsResponse>(url);
 
@@ -15,7 +15,7 @@ const { data: shows } = await useFetch<IApiShowsResponse>(url);
     <h2 class="font-extrabold text-2xl mb-6">Most popular shows</h2>
 
     <div>
-      <div class="flex flex-row gap-4 overflow-y-scroll pb-4">
+      <div class="flex flex-row gap-4 overflow-y-scroll pb-4 mb-6">
         <ShowCard
           v-for="currentShow in shows.result.slice(4)"
           :key="currentShow.id"
@@ -23,7 +23,7 @@ const { data: shows } = await useFetch<IApiShowsResponse>(url);
         />
       </div>
 
-      <div class="flex flex-row items-center justify-between mb-8">
+      <div class="flex flex-row items-center justify-between mb-12">
         <UPagination
           v-model="showsPage"
           :page-count="5"

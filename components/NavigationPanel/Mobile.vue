@@ -1,19 +1,25 @@
 <script lang="ts" setup>
 import { genres } from "~/constants/genres";
+import { menuNavigation } from "~/constants/navigation";
+const { currentRoute } = useRouter();
 </script>
-
 <template>
-  <section class="flex-1 mt-6 mx-6">
-    <div class="mb-6 mr-6 flex flex-row items-center justify-between">
-      <h2 class="font-extrabold text-2xl">Genres</h2>
-      <NuxtLink to="/genres" class="hidden 2xl:block">
-        <p class="text-sm flex flex-row items-center justify-center">
-          See more...
-        </p>
+  <div class="mt-4">
+    <h2 class="font-extrabold text-2xl mb-6">Menu</h2>
+    <div class="mt-4 flex flex-row justify-between space-x-8">
+      <NuxtLink v-for="link in menuNavigation" :key="link.id" :to="link.to">
+        <div
+          class="flex flex-1 flex-row items-center pr-6 mr-2 mb-6"
+          :class="currentRoute.path === link.to ? ' text-green-500' : ''"
+        >
+          <UIcon :name="link.icon" class="w-8 h-8 mr-2" />
+          <p class="text-lg">{{ link.title }}</p>
+        </div>
       </NuxtLink>
     </div>
 
-    <div class="grid grid-cols-1 2xl:grid-cols-2 gap-4">
+    <h2 class="font-extrabold text-2xl mb-6">Genres</h2>
+    <div class="grid grid-cols-4 gap-4">
       <NuxtLink
         v-for="genre in genres.slice(1, 5)"
         :to="`/genres?genre=${genre.name}`"
@@ -40,10 +46,9 @@ import { genres } from "~/constants/genres";
           <h4>{{ genre.name }}</h4>
         </UCard>
       </NuxtLink>
+      <NuxtLink to="/genres">
+        <p class="text-sm flex flex-row mt-2">See more...</p>
+      </NuxtLink>
     </div>
-
-    <NuxtLink to="/genres" class="block 2xl:hidden">
-      <p class="text-sm flex flex-row mt-2">See more...</p>
-    </NuxtLink>
-  </section>
+  </div>
 </template>

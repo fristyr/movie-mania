@@ -3,7 +3,7 @@ export const menuNavigation = [
       id: 1,
       to: "/",
       title: "Home",
-      icon: "i-heroicons-home-20-solid",
+      icon: "i-heroicons-home",
     },
     {
       id: 2,
