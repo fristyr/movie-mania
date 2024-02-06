@@ -1,20 +1,7 @@
 <script lang="ts" setup>
 import type { IShow } from "~/types/tvmaze/shows";
 
- defineProps<{ shows: IShow[] }>();
-
-const statusColor = (showStatus: IShow["status"]) => {
-  switch (showStatus) {
-    case "Running":
-      return "text-green-500";
-    case "To Be Determined":
-      return "text-yellow-500";
-    case "Ended":
-      return "text-red-600";
-    default:
-      return "text-white";
-  }
-};
+defineProps<{ shows: IShow[] }>();
 </script>
 
 <template>
@@ -43,7 +30,9 @@ const statusColor = (showStatus: IShow["status"]) => {
         </div>
 
         <div class="flex-1 p-12">
-          <h1 class="font-lato font-extrabold text-2xl mb-4">{{ item.name }}</h1>
+          <h1 class="font-lato font-extrabold text-2xl mb-4">
+            {{ item.name }}
+          </h1>
 
           <div class="flex flex-row items-center justify-between mb-4">
             <h4 class="font-lato text-md">Premiered: {{ item.premiered }}</h4>
@@ -60,7 +49,11 @@ const statusColor = (showStatus: IShow["status"]) => {
           <div class="flex flex-row items-center justify-between mb-4">
             <div class="flex flex-row">
               <h4 class="mr-2">Genres:</h4>
-              <span v-for="(genre, index) in item.genres" :key="genre + index" class="mr-2">
+              <span
+                v-for="(genre, index) in item.genres"
+                :key="genre + index"
+                class="mr-2"
+              >
                 {{ genre }}
               </span>
             </div>
@@ -81,12 +74,12 @@ const statusColor = (showStatus: IShow["status"]) => {
             />
             <NuxtLink :to="`/tvshows/${item.id}`">
               <UButton
-              color="primary"
-              variant="solid"
-              :padded="false"
-              class="flex-[0.5] items-center justify-center px-4 py-4 rounded-2xl font-extrabold"
-              >Watch
-            </UButton>
+                color="primary"
+                variant="solid"
+                :padded="false"
+                class="flex-[0.5] items-center justify-center px-4 py-4 rounded-2xl font-extrabold"
+                >Watch
+              </UButton>
             </NuxtLink>
           </div>
         </div>
