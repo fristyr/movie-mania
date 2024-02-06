@@ -66,7 +66,7 @@ const dropdownItems = ref([
         >
           <NavigationPanelLeft />
         </aside>
-        <section>
+        <section >
           <UContainer
             :ui="{
               constrained: 'max-w-6xl',

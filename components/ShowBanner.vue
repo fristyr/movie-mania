@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { IShow } from "~/types/tvmaze/shows";
 
-const props = defineProps<{ shows: IShow[] }>();
+ defineProps<{ shows: IShow[] }>();
 
 const statusColor = (showStatus: IShow["status"]) => {
   switch (showStatus) {
@@ -43,10 +43,10 @@ const statusColor = (showStatus: IShow["status"]) => {
         </div>
 
         <div class="flex-1 p-12">
-          <h1 class="font-lato font-extrabold text-2xl mb-4">Braking Bads</h1>
+          <h1 class="font-lato font-extrabold text-2xl mb-4">{{ item.name }}</h1>
 
           <div class="flex flex-row items-center justify-between mb-4">
-            <h4 class="font-lato text-md">Premiered: 2005-02-21</h4>
+            <h4 class="font-lato text-md">Premiered: {{ item.premiered }}</h4>
             <h4 class="flex items-center justify-center">
               <span class="mr-2">Status:</span>
               <UIcon
@@ -64,7 +64,7 @@ const statusColor = (showStatus: IShow["status"]) => {
                 {{ genre }}
               </span>
             </div>
-            <h4>Country: United States</h4>
+            <h4>Country: {{ item.network.country.name }}</h4>
           </div>
 
           <div class="mr-12 mb-4" v-html="item.summary"></div>
@@ -79,13 +79,15 @@ const statusColor = (showStatus: IShow["status"]) => {
               :padded="false"
               class="px-4 py-4 opacity-85 rounded-2xl"
             />
-            <UButton
+            <NuxtLink :to="`/tvshows/${item.id}`">
+              <UButton
               color="primary"
               variant="solid"
               :padded="false"
               class="flex-[0.5] items-center justify-center px-4 py-4 rounded-2xl font-extrabold"
               >Watch
             </UButton>
+            </NuxtLink>
           </div>
         </div>
       </article>

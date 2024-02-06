@@ -42,10 +42,10 @@ const statusColor = (showStatus: IShow["status"]) => {
     class="min-w-64"
   >
     <template #header>
-      <h4 class="font-lato font-extrabold text-lg truncate">{{ show.name }}</h4>
+      <h4 class="font-lato font-extrabold text-lg text-white truncate">{{ show.name }}</h4>
       <div class="flex flex-row items-center">
-        <UIcon name="i-heroicons-star-solid mr-2" />
-        <span>{{ show.rating.average }}</span>
+        <UIcon name="i-heroicons-star-solid mr-2" class="text-white " />
+        <span class="text-white ">{{ show.rating.average }}</span>
       </div>
     </template>
 
@@ -57,7 +57,7 @@ const statusColor = (showStatus: IShow["status"]) => {
         />
         <span :class="statusColor(show.status)">{{ show.status }}</span>
       </div>
-      <ul class="list-disc pl-4">
+      <ul class="text-white list-disc pl-4">
         <li v-for="(genre, index) in show.genres" :key="genre + index">
           {{ genre }}
         </li>
@@ -75,13 +75,15 @@ const statusColor = (showStatus: IShow["status"]) => {
           :padded="false"
           class="px-4 py-4 opacity-85 rounded-2xl"
         />
-        <UButton
-          color="primary"
-          variant="solid"
-          :padded="false"
-          class="flex-1 items-center justify-center px-4 py-4 rounded-2xl font-extrabold"
-          >Watch
-        </UButton>
+        <NuxtLink :to="`/tvshows/${show.id}`">
+          <UButton
+            color="primary"
+            variant="solid"
+            :padded="false"
+            class="flex-1 items-center justify-center px-4 py-4 rounded-2xl font-extrabold"
+            >Watch
+          </UButton>
+        </NuxtLink>
       </div>
     </template>
   </UCard>
