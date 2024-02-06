@@ -69,7 +69,7 @@ watch(showsPage, () => {
   <section v-if="shows">
     <UTabs
       :items="items"
-      class="w-1/2 mb-6"
+      class="w-full  mb-6"
       :default-index="0"
       @change="(index) => (currentSort = index)"
     >
@@ -82,7 +82,7 @@ watch(showsPage, () => {
       </template>
     </UTabs>
 
-    <div class="grid grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
+    <div class="grid grid-cols-2 xl:grid-cols-3  gap-4 mb-12">
       <ShowCard
         v-for="currentShow in filteredData"
         :key="currentShow.id"

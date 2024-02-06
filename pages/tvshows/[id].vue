@@ -10,7 +10,7 @@ const { data: show } = await useFetch<IShow>(url);
 
 <template>
   <section v-if="show">
-    <div class="flex flex-1 flex-row my-6">
+    <div class="flex flex-1 flex-col xl:flex-row items-center xl:items-start min-h-[80vh] my-6">
       <NuxtImg
         :src="
           show.image && show.image.medium
@@ -43,8 +43,8 @@ const { data: show } = await useFetch<IShow>(url);
           <p>Rating: {{ show.rating.average }}</p>
           <p>Language: {{ show.language }}</p>
           <p>Type: {{ show.type }}</p>
-          <p>Network: {{ show.network.name }}</p>
-          <p>Country: {{ show.network.country.name }}</p>
+          <p v-if="show.network">Network: {{ show.network.name }}</p>
+          <p v-if="show.network">Country: {{ show.network.country.name }}</p>
           <p>
             <span>Genre: </span>
             <span

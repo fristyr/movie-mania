@@ -3,12 +3,14 @@ import { useRoute } from "vue-router";
 import { genres } from "~/constants/genres";
 import type { IApiShowsResponse, IGenres, IShow } from "~/types/tvmaze/shows";
 
+const router = useRouter();
+
 const showsPage = ref(1);
 const route = useRoute();
 const selectedGenre = computed(() => route.query.genre as IGenres["name"]);
 
 const url = computed(
-  () => `/api/movies/shows?pagination=${showsPage.value}`
+  () => `/api/movies/shows?pagination=${showsPage.value}&limit=25`
 );
 
 const { data: shows, refresh } = await useFetch<IApiShowsResponse>(url);
@@ -43,7 +45,9 @@ watch(showsPage, () => {
             backgroundSize: 'cover',
           }"
           :ui="{
-            base: `bg-blend-darken ${genre.name === selectedGenre ? 'border-2 border-green-500':''}`,
+            base: `bg-blend-darken ${
+              genre.name === selectedGenre ? 'border-2 border-green-500' : ''
+            }`,
             rounded: 'rounded-2xl',
             header: {
               padding: 'pb-6',
@@ -64,7 +68,7 @@ watch(showsPage, () => {
 
   <section v-if="shows">
     <h2 class="font-extrabold text-2xl my-6">TV Shows!</h2>
-    <div class="grid grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
+    <div class="grid grid-cols-3 lg:grid-cols-3 gap-4 mb-12">
       <ShowCard
         v-for="show in filterShowsByGenre"
         :key="show.id"
