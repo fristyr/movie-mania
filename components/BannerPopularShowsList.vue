@@ -7,7 +7,7 @@ const { pending, data: shows } = await useFetch<IApiShowsResponse>(
 </script>
 
 <template>
-  <section class="mb-8">
+  <section class="my-8">
     <ShowBannerSkeleton v-if="pending" />
     <ShowBanner v-else-if="shows" :shows="shows.result.slice(0, 4)" />
   </section>

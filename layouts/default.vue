@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-
 async function handleSignOut() {}
 
 const dropdownItems = ref([
@@ -28,14 +27,16 @@ const dropdownItems = ref([
 </script>
 <template>
   <div>
-    <header class="p-2 border-b dark:border-gray-700 bg-white dark:bg-gray-800">
+    <header
+      class="p-2 border-b-2 dark:border-gray-700 bg-white dark:bg-gray-800"
+    >
       <UContainer>
         <div class="flex items-center justify-between my-2 relative">
           <NuxtLink to="/">
             <UIcon
-            name="i-arcticons-cinemark-theatres"
-            class="text-primary-500 w-12 h-12"
-          />
+              name="i-arcticons-cinemark-theatres"
+              class="text-primary-500 w-12 h-12"
+            />
           </NuxtLink>
 
           <SearchBar />
@@ -58,11 +59,38 @@ const dropdownItems = ref([
         </div>
       </UContainer>
     </header>
-    <main class="my-4">
-      <UContainer>
-        <slot />
-      </UContainer>
+    <main>
+      <section class="flex flex-row justify-between">
+        <aside
+          class="flex flex-1 border-l-2 border-r-2 dark:border-gray-700 bg-white dark:bg-gray-800"
+        >
+          <h1>I am left ASIDE</h1>
+        </aside>
+        <section>
+          <UContainer
+            :ui="{
+              constrained: 'max-w-6xl',
+            }"
+          >
+            <slot />
+          </UContainer>
+        </section>
+        <aside
+          class="flex flex-1 border-l-2 border-r-2 dark:border-gray-700 bg-white dark:bg-gray-800"
+        >
+          <h1>I am right ASIDE</h1>
+        </aside>
+      </section>
     </main>
+    <footer
+      class="min-h-32 border-t-2 border-2 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-center"
+    >
+      <div>
+        <h6 class="text-center">@MoovieMania</h6>
+
+        <p>By Dennis Goncearuc (Fistyr)</p>
+      </div>
+    </footer>
   </div>
 </template>
 

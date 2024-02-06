@@ -11,7 +11,7 @@ const { data: shows } = await useFetch<IApiShowsResponse>(url);
 </script>
 
 <template>
-  <section class="mb-24" v-if="shows">
+  <section v-if="shows">
     <h2 class="font-extrabold text-2xl mb-6">Most popular shows</h2>
 
     <div>
@@ -23,7 +23,7 @@ const { data: shows } = await useFetch<IApiShowsResponse>(url);
         />
       </div>
 
-      <div class="flex flex-row items-center justify-between">
+      <div class="flex flex-row items-center justify-between mb-8">
         <UPagination
           v-model="showsPage"
           :page-count="5"
@@ -39,10 +39,11 @@ const { data: shows } = await useFetch<IApiShowsResponse>(url);
             label: 'Next',
             color: 'gray',
           }"
+          size="xl"
         />
 
         <NuxtLink to="/tvshows">
-          <UButton variant="outline" color="primary" >See more...</UButton>
+          <UButton variant="outline" color="primary" size="xl" >See more...</UButton>
         </NuxtLink>
       </div>
     </div>

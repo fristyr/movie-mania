@@ -63,7 +63,7 @@ watch(showsPage, () => {
 </script>
 <template>
   <section>
-    <h2 class="font-extrabold text-2xl mb-6">TV shows</h2>
+    <h2 class="font-extrabold text-2xl mb-6 mt-6">TV shows</h2>
   </section>
 
   <section v-if="shows">
