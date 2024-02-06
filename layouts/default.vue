@@ -64,7 +64,7 @@ const dropdownItems = ref([
         <aside
           class="flex flex-1 border-l-2 border-r-2 dark:border-gray-700 bg-white dark:bg-gray-800"
         >
-          <h1>I am left ASIDE</h1>
+          <NavigationPanelLeft />
         </aside>
         <section>
           <UContainer
