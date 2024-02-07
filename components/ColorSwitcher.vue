@@ -19,6 +19,7 @@ const isDark = computed({
       variant="outline"
       aria-label="Theme"
       @click="isDark = !isDark"
+      class="color-mode-switcher"
     />
   </ClientOnly>
 </template>

@@ -34,7 +34,7 @@ const dynamicClass = (link: string) => {
   <section class="flex-1 mt-6 ml-6">
     <div class="mb-12">
       <h2 class="font-extrabold text-2xl mb-6">Menu</h2>
-      <NuxtLink v-for="link in menuNavigation" :key="link.id" :to="link.to">
+      <NuxtLink v-for="link in menuNavigation" :key="link.id" :to="link.to" :class="`navigation-${link.id}`">
         <div
           class="flex flex-1 flex-row items-center mr-2 mb-6"
           :class="dynamicClass(link.to)"

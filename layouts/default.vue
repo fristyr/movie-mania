@@ -5,11 +5,11 @@ const isLeftMenuOpen = ref(false);
 <template>
   <div>
     <header
-      class="p-2 border-b-2 dark:border-gray-700 bg-white dark:bg-gray-800"
+      class="main-header p-2 border-b-2 dark:border-gray-700 bg-white dark:bg-gray-800"
     >
       <UContainer>
         <div class="flex items-center justify-between my-2 relative">
-          <NuxtLink to="/">
+          <NuxtLink to="/" class="home-page-icon">
             <UIcon
               name="i-arcticons-cinemark-theatres"
               class="text-primary-500 w-12 h-12"

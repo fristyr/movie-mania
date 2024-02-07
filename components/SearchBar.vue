@@ -34,11 +34,12 @@ const selectSearchResult = (showId: number) => {
       icon="i-heroicons-magnifying-glass-20-solid"
       @focus="searchPanelVisible = true"
       @blur="searchPanelVisibleDebounced = false"
+      class="search-bar"
     />
 
     <div
       v-if="searchPanelVisible"
-      class="absolute left-0 top-20 rounded-2xl bg-white dark:bg-gray-800 h-[70vh] xl:h-[60vh] w-full z-[99999] shadow ring-1 ring-gray-200 dark:ring-gray-800 px-12 py-8 border-2"
+      class="search-bar-results absolute left-0 top-20 rounded-2xl bg-white dark:bg-gray-800 h-[70vh] xl:h-[60vh] w-full z-[99999] shadow ring-1 ring-gray-200 dark:ring-gray-800 px-12 py-8 border-2"
     >
       <div class="flex flex-row items-center justify-between">
         <h2 class="font-extrabold text-2xl mb-12">Your search results!</h2>
@@ -54,7 +55,7 @@ const selectSearchResult = (showId: number) => {
         />
       </div>
 
-      <div class="overflow-auto max-h-[60vh] xl:max-h-[40vh] h-full space-y-8">
+      <div class="search-bar-results-container overflow-auto max-h-[60vh] xl:max-h-[40vh] h-full space-y-8">
         <div v-if="pending" class="flex items-center space-x-4">
           <USkeleton
             class="h-12 w-12"
@@ -79,7 +80,7 @@ const selectSearchResult = (showId: number) => {
           v-for="item in searchShows"
           :key="item.show.id"
           @click="selectSearchResult(item.show.id)"
-          class="flex flex-row items-center cursor-pointer"
+          class="search-result flex flex-row items-center cursor-pointer"
         >
           <img
             :src="

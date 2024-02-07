@@ -53,3 +53,14 @@ To get Moovie Mania up and running on your local machine, follow these steps:
 2. **npm run dev**: Run the project
 3. Open http://localhost:3000/
 
+
+## Tests
+This project contains unit and e2e tests
+
+For e2e tests I use playwright framework.
+Install it with ```npx playwright install```
+Then run ```npm run e2e```
+
+If you want to run unit test 
+Just run ```npm run test```
+
