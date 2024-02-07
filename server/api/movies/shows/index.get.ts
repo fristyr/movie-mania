@@ -50,12 +50,12 @@ async function fetchShowsFromApi(config: NitroRuntimeConfig, pages: number[]): P
 async function fetchAndPrepareShows(pagination: number, sort: 'asc' | 'desc' | null, pageSize: number): Promise<IApiShowsResponse> {
   const config = useRuntimeConfig();
   const cacheKey = 'shows';
+  // Attempt to get cached data
   let shows = await useStorage<IShow[]>().getItem(cacheKey);
-
+  // If cached is empty, fetch shows from the api and save to the cache
   if (!shows) {
     shows = await fetchShowsFromApi(config, [0, 1, 2]);
     await useStorage().setItem(cacheKey, shows);
-  } else {
   }
 
   const sortedShows = sortShows(shows, sort);

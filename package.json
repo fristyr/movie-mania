@@ -28,7 +28,6 @@
     "@vitejs/plugin-vue": "^5.0.3",
     "@vueuse/nuxt": "^10.7.2",
     "eslint-plugin-vitest": "^0.3.22",
-    "jsdom": "^24.0.0",
-    "pinia": "^2.1.7"
+    "jsdom": "^24.0.0"
   }
 }

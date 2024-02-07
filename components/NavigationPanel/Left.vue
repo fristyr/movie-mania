@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 const { currentRoute } = useRouter();
+
 const menuNavigation = [
   {
     id: 1,
@@ -26,6 +27,7 @@ const dynamicClass = (link: string) => {
     ? "border-r-2 border-green-500 text-green-500"
     : "";
 };
+
 </script>
 
 <template>
