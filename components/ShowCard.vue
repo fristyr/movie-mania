@@ -27,7 +27,7 @@ defineProps<{ show: IShow }>();
         base: 'border-none',
       },
     }"
-    class="min-w-64"
+    class="min-w-64 show-card"
   >
     <template #header>
       <h4 class="font-lato font-extrabold text-lg text-white truncate">

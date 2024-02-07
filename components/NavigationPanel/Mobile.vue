@@ -1,7 +1,29 @@
 <script lang="ts" setup>
 import { genres } from "~/constants/genres";
-import { menuNavigation } from "~/constants/navigation";
+
 const { currentRoute } = useRouter();
+
+const menuNavigation = [
+  {
+    id: 1,
+    to: "/",
+    title: "Home",
+    icon: "i-heroicons-home",
+  },
+  {
+    id: 2,
+    to: "/tvshows",
+    title: "Shows",
+    icon: "i-heroicons-film",
+  },
+  {
+    id: 3,
+    to: "/genres?genre=All",
+    title: "Genres",
+    icon: "i-heroicons-user-group-solid",
+  },
+];
+
 </script>
 <template>
   <div class="mt-4">

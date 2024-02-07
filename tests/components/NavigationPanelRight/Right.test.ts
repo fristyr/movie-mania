@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest'
-import { mount } from '@vue/test-utils'
-import Right from '../../../components/NavigationPanel/Right.vue' 
-import { genres } from '~/constants/genres'
+import { describe, it, expect } from 'vitest';
+import { mount } from '@vue/test-utils';
+import Right from '../../../components/NavigationPanel/Right.vue';
+import { genres } from '~/constants/genres';
 
 describe('NavigationPanel for Right component', () => {
     it('Right is a Vue instance', () => {

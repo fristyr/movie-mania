@@ -14,7 +14,6 @@ const { data: shows } = await useFetch<IApiShowsResponse>(url);
   <section v-if="shows">
     <h2 class="font-extrabold text-2xl mb-6">Most popular shows</h2>
 
-    <div>
       <div class="flex flex-row gap-4 overflow-y-scroll pb-4 mb-6">
         <ShowCard
           v-for="currentShow in shows.result.slice(4)"
@@ -46,6 +45,5 @@ const { data: shows } = await useFetch<IApiShowsResponse>(url);
           <UButton variant="outline" color="primary" size="xl" >See more...</UButton>
         </NuxtLink>
       </div>
-    </div>
   </section>
 </template>

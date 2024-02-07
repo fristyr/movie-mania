@@ -1,16 +1,22 @@
 <script lang="ts" setup>
 import { refDebounced } from "@vueuse/core";
 import type { IApiShowSearchResponse, IShow } from "~/types/tvmaze/shows";
+
+const router = useRouter();
 const searchPanelVisible = ref(false);
 const searchInput = ref("");
 const debounced = refDebounced(searchInput, 400);
+const searchPanelVisibleDebounced = refDebounced(searchPanelVisible, 300)
 
-const url = computed(
-  () => `/api/movies/search?q=${debounced.value}`
-);
+const url = computed(() => `/api/movies/search?q=${debounced.value}`);
 
 const { data: searchShows } = await useFetch<IApiShowSearchResponse[]>(url);
 
+const selectSearchResult =  (showId: number) => {
+  searchPanelVisible.value = false; // 
+  searchInput.value = ''
+  router.push(`/tvshows/${showId}`); 
+};
 </script>
 
 <template>
@@ -23,12 +29,12 @@ const { data: searchShows } = await useFetch<IApiShowSearchResponse[]>(url);
       size="lg"
       icon="i-heroicons-magnifying-glass-20-solid"
       @focus="searchPanelVisible = true"
-      @blur="searchPanelVisible = false"
+      @blur="searchPanelVisibleDebounced = false"
     />
 
     <div
       v-if="searchPanelVisible"
-      class="absolute left-0 top-20 rounded-2xl bg-white dark:bg-gray-800 h-[70vh] xl:h-[50vh] w-full z-[99999] shadow ring-1 ring-gray-200 dark:ring-gray-800 px-12 py-8 border-2"
+      class="absolute left-0 top-20 rounded-2xl bg-white dark:bg-gray-800 h-[70vh] xl:h-[60vh] w-full z-[99999] shadow ring-1 ring-gray-200 dark:ring-gray-800 px-12 py-8 border-2"
     >
       <div class="flex flex-row items-center justify-between">
         <h2 class="font-extrabold text-2xl mb-12">Your search results!</h2>
@@ -48,8 +54,8 @@ const { data: searchShows } = await useFetch<IApiShowSearchResponse[]>(url);
         <NuxtLink
           v-for="item in searchShows"
           :key="item.show.id"
-          :to="`/tvshows/${item.show.id}`"
-          class="flex flex-row items-center"
+          @click="selectSearchResult(item.show.id)"
+          class="flex flex-row items-center cursor-pointer"
         >
           <img
             :src="
@@ -82,6 +88,10 @@ const { data: searchShows } = await useFetch<IApiShowSearchResponse[]>(url);
             </div>
           </div>
         </NuxtLink>
+
+        <div v-if="!searchShows?.length">
+          <p>No results... Start Typing</p>
+        </div>
       </div>
     </div>
   </section>

@@ -1,6 +1,25 @@
 <script lang="ts" setup>
-import { menuNavigation } from "../../constants/navigation";
 const { currentRoute } = useRouter();
+const menuNavigation = [
+  {
+    id: 1,
+    to: "/",
+    title: "Home",
+    icon: "i-heroicons-home",
+  },
+  {
+    id: 2,
+    to: "/tvshows",
+    title: "Shows",
+    icon: "i-heroicons-film",
+  },
+  {
+    id: 3,
+    to: "/genres?genre=All",
+    title: "Genres",
+    icon: "i-heroicons-user-group-solid",
+  },
+];
 
 const dynamicClass = (link: string) => {
   return currentRoute.value.fullPath === link
