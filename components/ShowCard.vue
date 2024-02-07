@@ -18,16 +18,17 @@ defineProps<{ show: IShow }>();
       base: 'bg-blend-darken',
       rounded: 'rounded-2xl',
       header: {
-        padding: 'pb-6',
+        padding: 'p-4 lg:py-5 lg:px-6 pb-2 lg-pb-6',
       },
       body: {
-        base: 'border-none min-h-52',
+        base: 'border-none min-h-40 lg:min-h-52',
+        padding: 'py-2 lg:py-5 sm:p-6',
       },
       footer: {
         base: 'border-none',
       },
     }"
-    class="min-w-64 show-card"
+    class="lg:min-w-64 show-card"
   >
     <template #header>
       <h4 class="font-lato font-extrabold text-lg text-white truncate">
@@ -78,4 +79,3 @@ defineProps<{ show: IShow }>();
     </template>
   </UCard>
 </template>
-

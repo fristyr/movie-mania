@@ -104,7 +104,7 @@ watch(showsPage, () => {
           label: 'Next',
           color: 'gray',
         }"
-        size="xl"
+        
       />
     </div>
   </section>

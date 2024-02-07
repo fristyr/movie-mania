@@ -26,21 +26,21 @@ const menuNavigation = [
 </script>
 <template>
   <div class="mt-4">
-    <h2 class="font-extrabold text-2xl mb-6">Menu</h2>
-    <div class="mt-4 flex flex-row justify-between space-x-8">
+    <h2 class="font-extrabold text-xl lg:text-2xl mb-6">Menu</h2>
+    <div class="mt-4 flex flex-row justify-between lg:space-x-8">
       <NuxtLink v-for="link in menuNavigation" :key="link.id" :to="link.to">
         <div
-          class="flex flex-1 flex-row items-center pr-6 mr-2 mb-6"
+          class="flex flex-1 flex-row items-center pr-6 lg:mr-2 mb-6"
           :class="currentRoute.fullPath === link.to ? ' text-green-500' : ''"
         >
-          <UIcon :name="link.icon" class="w-8 h-8 mr-2" />
-          <p class="text-lg">{{ link.title }}</p>
+          <UIcon :name="link.icon" class="w-4 h-4 mr-2" />
+          <p class="text-md">{{ link.title }}</p>
         </div>
       </NuxtLink>
     </div>
 
-    <h2 class="font-extrabold text-2xl mb-6">Genres</h2>
-    <div class="grid grid-cols-4 gap-4">
+    <h2 class="font-extrabold text-xl lg:text-2xl mb-6">Genres</h2>
+    <div class="grid grid-cols-4 gap-2 lg:gap-4">
       <NuxtLink
         v-for="genre in genres.slice(1, 5)"
         :to="`/genres?genre=${genre.name}`"
@@ -64,10 +64,10 @@ const menuNavigation = [
             },
           }"
         >
-          <h4 class="text-sm font-extrabold text-white">{{ genre.name }}</h4>
+          <h4 class="text-md text-white">{{ genre.name }}</h4>
         </UCard>
       </NuxtLink>
-      <NuxtLink to="/genres?genre=All">
+      <NuxtLink to="/genres?genre=All" class="mb-4 lg:mb-0">
         <p class="text-sm flex flex-row mt-2">See more...</p>
       </NuxtLink>
     </div>

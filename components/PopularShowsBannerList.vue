@@ -11,7 +11,7 @@ const {
 </script>
 
 <template>
-  <section class="my-8">
+  <section class="hidden lg:block my-8">
     <ShowBannerSkeleton v-if="pending" />
     <ShowBanner v-else-if="shows" :shows="shows.result.slice(0, 4)" />
     <div v-else-if="error">

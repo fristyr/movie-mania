@@ -13,7 +13,7 @@ const {
 </script>
 
 <template>
-  <h2 class="font-extrabold text-2xl mb-6">Most popular shows</h2>
+  <h2 class="font-extrabold text-lg lg:text-2xl mb-6">Most popular shows</h2>
   <section v-if="shows">
     <div class="flex flex-row gap-4 overflow-y-scroll pb-4 mb-6">
       <ShowCard
@@ -23,7 +23,7 @@ const {
       />
     </div>
 
-    <div class="flex flex-row items-center justify-between mb-12">
+    <div class="flex flex-col-reverse lg:flex-row items-center justify-between mb-12">
       <UPagination
         v-model="showsPage"
         :page-count="5"
@@ -40,10 +40,11 @@ const {
           label: 'Next',
           color: 'gray',
         }"
-        size="xl"
+        
+       
       />
 
-      <NuxtLink to="/tvshows" :event="pending">
+      <NuxtLink to="/tvshows" :event="pending" class="mb-6 lg:mb-0 ">
         <UButton :disabled="pending" variant="outline" color="primary" size="xl"
           >See more...</UButton
         >

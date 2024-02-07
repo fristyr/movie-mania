@@ -44,7 +44,7 @@ const isLeftMenuOpen = ref(false);
               :ui="{
                 padding: 'px-4 sm:px-6 lg:px-8',
                 constrained:
-                  'max-w-[35rem] sm:max-w-[40rem] md:max-w-[45rem] lg:max-w-[60rem] xl:max-w-5xl 2xl:mx-w-3xl ',
+                  'max-w-[25rem] sm:max-w-[40rem] md:max-w-[45rem] lg:max-w-[60rem] xl:max-w-5xl 2xl:mx-w-3xl ',
               }"
             >
               <!-- Mobile Menu -->
