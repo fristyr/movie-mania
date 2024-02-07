@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { skeleton } from "@nuxt/ui";
 import { useRoute } from "vue-router";
 import { genres } from "~/constants/genres";
 import type { IApiShowsResponse, IGenres, IShow } from "~/types/tvmaze/shows";
@@ -81,7 +80,7 @@ watch(showsPage, () => {
     />
   </div>
   <section v-else-if="shows">
-    <div class="grid grid-cols-3 lg:grid-cols-3 gap-4 mb-12">
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
       <ShowCard
         v-for="show in filterShowsByGenre"
         :key="show.id"

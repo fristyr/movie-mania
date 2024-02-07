@@ -23,7 +23,6 @@ const menuNavigation = [
     icon: "i-heroicons-user-group-solid",
   },
 ];
-
 </script>
 <template>
   <div class="mt-4">
@@ -65,7 +64,7 @@ const menuNavigation = [
             },
           }"
         >
-          <h4>{{ genre.name }}</h4>
+          <h4 class="text-sm font-extrabold text-white">{{ genre.name }}</h4>
         </UCard>
       </NuxtLink>
       <NuxtLink to="/genres?genre=All">

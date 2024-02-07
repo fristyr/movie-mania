@@ -24,7 +24,7 @@ export const genres: IGenres[] = [
     image:
       "https://static.tvmaze.com/uploads/images/medium_portrait/127/319360.jpg",
   },
-  
+
   {
     name: "Thriller",
     image: "https://static.tvmaze.com/uploads/images/medium_portrait/501/1253519.jpg",

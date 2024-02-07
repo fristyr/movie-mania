@@ -29,6 +29,12 @@ Moovie Mania aims to:
 
 ## Getting Started
 
+### Please note
+For this project you need:
+* Node.js 18+ (preferable latest). I used v21.6.1 lts
+* Npm 10.2.4 +
+
+
 To get Moovie Mania up and running on your local machine, follow these steps:
 
 1. **Open the project and open terminal**: Installing dependencies
