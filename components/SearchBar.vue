@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { refDebounced } from "@vueuse/core";
-import type { IApiShowSearchResponse, IShow } from "~/types/tvmaze/shows";
+import type { IApiShowSearchResponse } from "~/types/tvmaze/shows";
 
 const router = useRouter();
 const searchPanelVisible = ref(false);
