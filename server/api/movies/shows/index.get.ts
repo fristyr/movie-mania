@@ -42,7 +42,6 @@ async function fetchShowsFromApi(config: NitroRuntimeConfig, pages: number[]): P
     // Flatten the array of arrays into a single array of shows
     return results.flat();
   } catch (error) {
-    console.error('Error fetching shows:', error);
     return []; // Return an empty array in case of error
   }
 }
@@ -56,9 +55,7 @@ async function fetchAndPrepareShows(pagination: number, sort: 'asc' | 'desc' | n
   if (!shows) {
     shows = await fetchShowsFromApi(config, [0, 1, 2]);
     await useStorage().setItem(cacheKey, shows);
-    console.log('FETCHED DATA');
   } else {
-    console.log('CACHED DATA');
   }
 
   const sortedShows = sortShows(shows, sort);
