@@ -1,18 +1,23 @@
 <script lang="ts" setup>
+import type { skeleton } from "@nuxt/ui";
 import { useRoute } from "vue-router";
 import { genres } from "~/constants/genres";
 import type { IApiShowsResponse, IGenres, IShow } from "~/types/tvmaze/shows";
 
 const showsPage = ref(1);
 const route = useRoute();
-const limit = ref(25)
 const selectedGenre = computed(() => route.query.genre as IGenres["name"]);
 
 const url = computed(
-  () => `/api/movies/shows?pagination=${showsPage.value}&limit=${limit.value}`
+  () => `/api/movies/shows?pagination=${showsPage.value}&limit=25`
 );
 
-const { data: shows, refresh } = await useFetch<IApiShowsResponse>(url);
+const {
+  data: shows,
+  pending,
+  refresh,
+  error,
+} = await useLazyFetch<IApiShowsResponse>(url);
 
 const filterShowsByGenre = computed(() => {
   const isGenreMatch = (show: IShow) =>
@@ -65,8 +70,17 @@ watch(showsPage, () => {
     </div>
   </section>
 
-  <section v-if="shows">
-    <h2 class="font-extrabold text-2xl my-6">TV Shows!</h2>
+  <h2 class="font-extrabold text-2xl my-6">TV Shows!</h2>
+
+  <div v-if="pending" class="grid grid-cols-3 lg:grid-cols-3 gap-4 mb-12">
+    <USkeleton
+      v-for="(_, index) in [...Array(6).keys()]"
+      :key="index"
+      class="h-52 w-52"
+      :ui="{ rounded: 'rounded-lg' }"
+    />
+  </div>
+  <section v-else-if="shows">
     <div class="grid grid-cols-3 lg:grid-cols-3 gap-4 mb-12">
       <ShowCard
         v-for="show in filterShowsByGenre"
@@ -94,5 +108,8 @@ watch(showsPage, () => {
         size="xl"
       />
     </div>
+  </section>
+  <section v-else-if="error">
+    <h4>Soething went wrong...</h4>
   </section>
 </template>

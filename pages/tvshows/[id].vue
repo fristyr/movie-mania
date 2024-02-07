@@ -2,15 +2,23 @@
 import type { IShow } from "~/types/tvmaze/shows";
 
 const route = useRoute();
-const url = computed(
-  () => `/api/movies/shows/${route.params.id}`
-);
-const { data: show } = await useFetch<IShow>(url);
+const url = computed(() => `/api/movies/shows/${route.params.id}`);
+const { data: show, pending, error } = await useLazyFetch<IShow>(url);
 </script>
 
 <template>
-  <section v-if="show">
-    <div class="flex flex-1 flex-col xl:flex-row items-center xl:items-start min-h-[80vh] my-6">
+  <section>
+    <div v-if="pending" class="flex items-center justify-center space-x-4 my-6">
+      <USkeleton class="h-72 w-32" :ui="{ rounded: 'rounded-xl' }" />
+      <div class="space-y-2">
+        <USkeleton class="h-32 w-[20rem]" />
+        <USkeleton class="h-32 w-[20rem]" />
+      </div>
+    </div>
+    <div
+      v-else-if="show"
+      class="flex flex-1 flex-col xl:flex-row items-center xl:items-start min-h-[80vh] my-6"
+    >
       <NuxtImg
         :src="
           show.image && show.image.medium
@@ -77,5 +85,8 @@ const { data: show } = await useFetch<IShow>(url);
         </div>
       </div>
     </div>
+    <section v-else-if="error">
+      <h4>Soething went wrong...</h4>
+    </section>
   </section>
 </template>

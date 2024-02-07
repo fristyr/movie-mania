@@ -4,8 +4,7 @@ import type { IApiShowsResponse } from "~/types/tvmaze/shows";
 const showsPage = ref(1);
 const currentSort = ref(0);
 const url = computed(
-  () =>
-    `/api/movies/shows?pagination=${showsPage.value}&limit=25`
+  () => `/api/movies/shows?pagination=${showsPage.value}&limit=25`
 );
 
 const items = [
@@ -48,7 +47,7 @@ const filteredData = computed(() => {
           (a, b) => (b.rating.average ?? 0) - (a.rating.average ?? 0)
         );
       case "running":
-        return shows.value.result.filter(show => show.status === 'Running')
+        return shows.value.result.filter((show) => show.status === "Running");
 
       default:
         return shows.value.result;
@@ -59,7 +58,6 @@ const filteredData = computed(() => {
 watch(showsPage, () => {
   window.scrollTo(0, 0);
 });
-
 </script>
 <template>
   <section>
@@ -69,7 +67,7 @@ watch(showsPage, () => {
   <section v-if="shows">
     <UTabs
       :items="items"
-      class="w-full  mb-6"
+      class="w-full mb-6"
       :default-index="0"
       @change="(index) => (currentSort = index)"
     >
@@ -82,7 +80,7 @@ watch(showsPage, () => {
       </template>
     </UTabs>
 
-    <div class="grid grid-cols-2 xl:grid-cols-3  gap-4 mb-12">
+    <div class="grid grid-cols-2 xl:grid-cols-3 gap-4 mb-12">
       <ShowCard
         v-for="currentShow in filteredData"
         :key="currentShow.id"
@@ -108,8 +106,6 @@ watch(showsPage, () => {
         }"
         size="xl"
       />
-
-      
     </div>
   </section>
 </template>

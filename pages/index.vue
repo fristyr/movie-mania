@@ -1,7 +1,3 @@
-<script lang="ts" setup>
-
-</script>
-
 <template>
     <section>
       <PopularShowsBannerList />
@@ -9,4 +5,3 @@
     </section>
 </template>
 
-<style></style>

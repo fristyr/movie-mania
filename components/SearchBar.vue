@@ -6,16 +6,20 @@ const router = useRouter();
 const searchPanelVisible = ref(false);
 const searchInput = ref("");
 const debounced = refDebounced(searchInput, 400);
-const searchPanelVisibleDebounced = refDebounced(searchPanelVisible, 300)
+const searchPanelVisibleDebounced = refDebounced(searchPanelVisible, 300);
 
 const url = computed(() => `/api/movies/search?q=${debounced.value}`);
 
-const { data: searchShows } = await useFetch<IApiShowSearchResponse[]>(url);
+const {
+  data: searchShows,
+  pending,
+  error,
+} = await useLazyFetch<IApiShowSearchResponse[]>(url);
 
-const selectSearchResult =  (showId: number) => {
-  searchPanelVisible.value = false; // 
-  searchInput.value = ''
-  router.push(`/tvshows/${showId}`); 
+const selectSearchResult = (showId: number) => {
+  searchPanelVisible.value = false; //
+  searchInput.value = "";
+  router.push(`/tvshows/${showId}`);
 };
 </script>
 
@@ -51,7 +55,27 @@ const selectSearchResult =  (showId: number) => {
       </div>
 
       <div class="overflow-auto max-h-[60vh] xl:max-h-[40vh] h-full space-y-8">
+        <div v-if="pending" class="flex items-center space-x-4">
+          <USkeleton
+            class="h-12 w-12"
+            :ui="{
+              rounded: 'rounded-lg',
+              background: 'bg-green-300 dark:bg-green-500',
+            }"
+          />
+          <div class="space-y-2">
+            <USkeleton
+              class="h-4 w-[250px]"
+              :ui="{ background: 'bg-green-300 dark:bg-green-500' }"
+            />
+            <USkeleton
+              class="h-4 w-[200px]"
+              :ui="{ background: 'bg-green-300 dark:bg-green-500' }"
+            />
+          </div>
+        </div>
         <NuxtLink
+          v-else-if="searchShows"
           v-for="item in searchShows"
           :key="item.show.id"
           @click="selectSearchResult(item.show.id)"
@@ -88,6 +112,9 @@ const selectSearchResult =  (showId: number) => {
             </div>
           </div>
         </NuxtLink>
+        <div v-else-if="error">
+          <h4>Soething went wrong...</h4>
+        </div>
 
         <div v-if="!searchShows?.length">
           <p>No results... Start Typing</p>
