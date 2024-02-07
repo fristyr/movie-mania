@@ -3,14 +3,13 @@ import { useRoute } from "vue-router";
 import { genres } from "~/constants/genres";
 import type { IApiShowsResponse, IGenres, IShow } from "~/types/tvmaze/shows";
 
-const router = useRouter();
-
 const showsPage = ref(1);
 const route = useRoute();
+const limit = ref(25)
 const selectedGenre = computed(() => route.query.genre as IGenres["name"]);
 
 const url = computed(
-  () => `/api/movies/shows?pagination=${showsPage.value}&limit=25`
+  () => `/api/movies/shows?pagination=${showsPage.value}&limit=${limit.value}`
 );
 
 const { data: shows, refresh } = await useFetch<IApiShowsResponse>(url);

@@ -6,7 +6,7 @@ import { genres } from "~/constants/genres";
   <section class="flex-1 mt-6 mx-6">
     <div class="mb-6 mr-6 flex flex-row items-center justify-between">
       <h2 class="font-extrabold text-2xl">Genres</h2>
-      <NuxtLink to="/genres" class="hidden 2xl:block">
+      <NuxtLink to="/genres?genre=All" class="hidden 2xl:block">
         <p class="text-sm flex flex-row items-center justify-center">
           See more...
         </p>

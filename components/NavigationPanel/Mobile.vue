@@ -68,7 +68,7 @@ const menuNavigation = [
           <h4>{{ genre.name }}</h4>
         </UCard>
       </NuxtLink>
-      <NuxtLink to="/genres">
+      <NuxtLink to="/genres?genre=All">
         <p class="text-sm flex flex-row mt-2">See more...</p>
       </NuxtLink>
     </div>

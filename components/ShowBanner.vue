@@ -24,7 +24,6 @@ defineProps<{ shows: IShow[] }>();
                 : 'https://placehold.co/100x100'
             "
             class="xl:w-[10rem] 2xl:w-[20rem] xl:h 2xl:h-full pt-8 2xl:pt-0"
-            
             fit="cover"
           />
         </div>
@@ -60,7 +59,10 @@ defineProps<{ shows: IShow[] }>();
             <h4>Country: {{ show.network.country.name }}</h4>
           </div>
 
-          <div class="mr-12 mb-4  2xl:max-w-[90%] xl:text-sm 2xl:text-lg" v-html="show.summary"></div>
+          <div
+            class="mr-12 mb-4 2xl:max-w-[90%] xl:text-sm 2xl:text-lg"
+            v-html="show.summary"
+          ></div>
 
           <div class="flex flex-row items-center space-x-4">
             <UButton

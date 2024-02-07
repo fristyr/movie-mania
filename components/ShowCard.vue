@@ -79,4 +79,3 @@ defineProps<{ show: IShow }>();
   </UCard>
 </template>
 
-<style></style>
