@@ -34,6 +34,14 @@ For this project you need:
 * Node.js 18+ (preferable latest). I used v21.6.1 lts
 * Npm 10.2.4 +
 
+Yous should have ```.env``` file in the root of the project.
+In case you don't have it, please create one with followed:
+
+```
+SHOWS_URL=https://api.tvmaze.com/shows
+SEARCH_SHOW_URL=https://api.tvmaze.com/search/shows
+```
+
 
 To get Moovie Mania up and running on your local machine, follow these steps:
 
