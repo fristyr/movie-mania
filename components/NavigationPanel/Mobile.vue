@@ -40,7 +40,7 @@ const menuNavigation = [
     </div>
 
     <h2 class="font-extrabold text-xl lg:text-2xl mb-6">Genres</h2>
-    <div class="grid grid-cols-4 gap-2 lg:gap-4">
+    <div class="genres-quick-list grid grid-cols-4 gap-2 lg:gap-4">
       <NuxtLink
         v-for="genre in genres.slice(1, 5)"
         :to="`/genres?genre=${genre.name}`"
@@ -67,7 +67,7 @@ const menuNavigation = [
           <h4 class="text-md text-white">{{ genre.name }}</h4>
         </UCard>
       </NuxtLink>
-      <NuxtLink to="/genres?genre=All" class="mb-4 lg:mb-0">
+      <NuxtLink to="/genres?genre=All" class="search-more-button mb-4 lg:mb-0">
         <p class="text-sm flex flex-row mt-2">See more...</p>
       </NuxtLink>
     </div>

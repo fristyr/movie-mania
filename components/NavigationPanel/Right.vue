@@ -3,7 +3,7 @@ import { genres } from "~/constants/genres";
 </script>
 
 <template>
-  <section class="flex-1 mt-6 mx-6">
+  <section class="genres-section flex-1 mt-6 mx-6">
     <div class="mb-6 mr-6 flex flex-row items-center justify-between">
       <h2 class="font-extrabold text-2xl">Genres</h2>
       <NuxtLink to="/genres?genre=All" class="hidden 2xl:block">
@@ -13,7 +13,7 @@ import { genres } from "~/constants/genres";
       </NuxtLink>
     </div>
 
-    <div class="grid grid-cols-1 2xl:grid-cols-2 gap-4">
+    <div class="genres-quick-list grid grid-cols-1 2xl:grid-cols-2 gap-4">
       <NuxtLink
         v-for="genre in genres.slice(1, 5)"
         :to="`/genres?genre=${genre.name}`"
@@ -43,7 +43,7 @@ import { genres } from "~/constants/genres";
       </NuxtLink>
     </div>
 
-    <NuxtLink to="/genres" class="block 2xl:hidden">
+    <NuxtLink to="/genres?genre=All" class="search-more-button block 2xl:hidden">
       <p class="text-sm flex flex-row mt-2">See more...</p>
     </NuxtLink>
   </section>
